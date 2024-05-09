@@ -1,0 +1,17 @@
+name: "bird_classifier"
+backend: "onnxruntime"  # Ensure this line is correctly set
+platform: "onnxruntime_onnx"
+input [
+  {
+    name: "onnx::Pad_0"
+    data_type: TYPE_FP32
+    dims: [1, 3, 224, 224]
+  }
+]
+output [
+  {
+    name: "1047"
+    data_type: TYPE_FP32
+    dims: [1, 525]
+  }
+]

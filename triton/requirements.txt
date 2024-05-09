@@ -1,0 +1,5 @@
+grpcio
+tritonclient[all]
+numpy
+opencv-python
+onnxruntime
