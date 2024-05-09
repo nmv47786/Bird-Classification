@@ -1,20 +1,42 @@
+networks:
+  default:
+    driver: bridge
+
+volumes:
+  model-data:
+
 services:
   nginx:
+    image: nginx:alpine
     build:
-      context: ./server
+      context: ./react-frontend
+    ports:
+      - "80:80"
+    restart: unless-stopped
+
+  flask-backend:
+    build:
+      context: ./backend
+    ports:
+      - "5000:5000"
+    environment:
+      - TRITON_SERVER_URL=http://triton:8000
+    volumes:
+      - model-data:/app/triton/model_repository
+    restart: unless-stopped
 
   triton:
     build: 
       context: ./triton
     container_name: triton_server
     environment:
-      - MODEL_REPOSITORY=/app/model_repository  # Ensure this matches your Docker setup
+      - MODEL_REPOSITORY=/app/model_repository
     ports:
       - "8000:8000"  # HTTP service
       - "8001:8001"  # gRPC service
       - "8002:8002"  # Metrics service
     volumes:
-      - ./triton/model_repository:/app/model_repository # Map local model repository to the one in the container
+      - model-data:/app/model_repository
     deploy:
       resources:
         reservations:

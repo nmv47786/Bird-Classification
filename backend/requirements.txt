@@ -1,0 +1,8 @@
+Flask
+python-dotenv
+requests
+grpcio
+tritonclient[all]
+numpy
+opencv-python
+flask-cors

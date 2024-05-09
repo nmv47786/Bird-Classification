@@ -5,7 +5,7 @@ import tritonclient.grpc as grpcclient
 import json
 
 def load_label_mapping():
-    with open("model_repository/bird_classifier/config.json", 'r') as file:
+    with open("triton/model_repository/bird_classifier/config.json", 'r') as file:
         data = json.load(file)
         return data['id2label']
 
@@ -23,7 +23,7 @@ def softmax(x):
     return e_x / e_x.sum(axis=1, keepdims=True)
 
 def perform_inference(input_data):
-    triton_client = grpcclient.InferenceServerClient(url="localhost:8001", verbose=True)
+    triton_client = grpcclient.InferenceServerClient(url="localhost:8001", verbose=False)
     input_name = "onnx::Pad_0"
     output_name = "1047"
     inputs = [grpcclient.InferInput(input_name, input_data.shape, "FP32")]
@@ -37,7 +37,6 @@ def perform_inference(input_data):
     return probabilities
 
 def get_top_predictions(probabilities, labels, top_k=3):
-    # Get the indices of the top K probabilities
     top_indices = np.argsort(probabilities[0])[-top_k:][::-1]
     results = [(labels[str(i)], probabilities[0][i]) for i in top_indices]
     return results

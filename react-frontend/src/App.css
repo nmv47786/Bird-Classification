@@ -1,0 +1,40 @@
+/* General styles for the App */
+.App {
+  text-align: center;
+  font-family: Arial, sans-serif; /* Ensuring a universal font is used */
+}
+
+/* Header styles */
+.App-header {
+  background-color: #ffffff; /* Light background for simplicity */
+  color: #333333; /* Dark text for readability */
+  padding: 20px; /* Adding some padding around the content */
+  border-bottom: 2px solid #eeeeee; /* A subtle line to separate the header */
+}
+
+/* Logo styles, simpler without animation */
+.App-logo {
+  height: 80px; /* Fixed height for the logo */
+  margin-bottom: 20px; /* Space below the logo */
+}
+
+/* Styles for links in the app */
+.App-link {
+  color: #007bff; /* A standard blue color for links */
+  text-decoration: none; /* No underline to keep it clean */
+}
+
+/* Additional styles for buttons for better visibility */
+button {
+  background-color: #007bff; /* Blue background for buttons */
+  color: white; /* White text on buttons */
+  border: none; /* No borders for a modern look */
+  padding: 10px 20px; /* Padding for button size */
+  border-radius: 5px; /* Rounded corners for the button */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-top: 10px; /* Space above the button */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker blue on hover for button */
+}
