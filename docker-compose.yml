@@ -14,7 +14,7 @@ services:
       - "80:80"
     restart: unless-stopped
 
-  flask-backend:
+  flask:
     build:
       context: ./backend
     ports:
@@ -37,6 +37,7 @@ services:
       - "8002:8002"  # Metrics service
     volumes:
       - model-data:/app/model_repository
+    restart: unless-stopped
     deploy:
       resources:
         reservations:
@@ -44,4 +45,3 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [gpu]
-    restart: unless-stopped

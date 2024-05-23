@@ -1,5 +1,5 @@
 name: "bird_classifier"
-backend: "onnxruntime"  # Ensure this line is correctly set
+backend: "onnxruntime"
 platform: "onnxruntime_onnx"
 input [
   {

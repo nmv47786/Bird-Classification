@@ -1,6 +1,12 @@
 This project uses https://huggingface.co/chriamue/bird-species-classifier
 
-I am using triton to make this more efficient.
+New Learning objectives: Triton, React, NGINX, Some stuff with Docker
+
+Run:
+./setup.sh
+
+
+
 
 TODO:
 Set up web server
